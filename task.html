@@ -101,6 +101,7 @@
 
       #task-counters {
         font-weight: bold;
+        color: var(--color-dark );
       }
 
       #stored-tasks {
@@ -282,8 +283,8 @@ function addTask() {
 function loadTasksFromStorage() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   listContainer.innerHTML = '';
-  completedTasksDiv.innerHTML = '';
-  uncompletedTasksDiv.innerHTML = '';
+  completedTasksDiv.innerHTML = '<h4>LIST ITEMS</h4>';
+  uncompletedTasksDiv.innerHTML = '<h4>LIST ITEMS</h4>';
 
   let completedCount = 0;
   let uncompletedCount = 0;
