@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TO-DO List</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons+Sharp"> 
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-background);
+      }
+      .all{
+        width: 96%;
+   display: grid;
+   gap: 1.8rem;
+   margin: 0 auto;
+    grid-template-columns:14rem auto  ;
+  text-align: center;
+      }
+      #todo-container {
+        width: 80%;
+        margin: 40px auto;
+        background-color: var(--color-white);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1, h2 {
+        text-align: center;
+        color: var(--color-dark);
+      }
+
+      #todo-form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .input-item {
+        padding: 10px;
+        font-size: 16px;
+        width: 60%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+
+      #input-button {
+        padding: 10px 20px;
+        font-size: large;
+        font-weight: bold;
+        background-color: #54ccc4;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #input-button:hover {
+        background-color: #337e79;
+      }
+
+      ul#list-container {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: var(--color-fill);
+        margin-bottom: 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        color: var(--color-dark );
+      }
+
+      span.edit-btn, span.delete-btn {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .edit-btn:hover {
+        color: #00b3a7;
+      }
+
+      .delete-btn:hover {
+        color: red;
+      }
+
+      .counter-container {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      #task-counters {
+        font-weight: bold;
+      }
+
+      #stored-tasks {
+        margin-top: 30px;
+      }
+
+      #completed-tasks, #uncompleted-tasks {
+        margin-top: 10px;
+        
+      }
+
+      #completed-tasks {
+        background-color: #d4edec;  /* Green background for completed tasks */
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      #completed-tasks .task{
+        text-decoration: line-through;
+      }
+      #uncompleted-tasks {
+        background-color: #ffcdcd;  /* Yellow background for uncompleted tasks */
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      hr {
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all">
+    <aside>
+      <div class="top">
+          <div class="logo">
+              <img src="./images/codingAge.png" alt="">
+              <h2 >CODING <span class="logo2">AGE</span> </h2>
+          </div>
+          <div class="close" id="close-btn">
+              <span class="material-icons-sharp">
+                  close
+                  </span>
+          </div>
+      </div>
+      <div class="sidebar">
+          <a href="./index.html" >
+              <span class="material-icons-sharp" >
+                  grid_view
+                  </span>
+              <h3>Dashboard</h3>
+          </a>
+          <a href="./customers.html">
+              <span class="material-icons-sharp" >
+                  person_outline
+                  </span>
+              <h3>Customers</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  receipt_long
+                  </span>
+              <h3>Orders</h3>
+          </a>
+          <a href="./task.html" class="active">
+              <span class="material-icons-sharp">
+                  task
+                  </span>
+              <h3>Tasks</h3>
+          </a>
+          <a href="./gallery.html"  >
+              <span class="material-icons-sharp">
+                  photo_library
+                  </span>
+              <h3>Gallery</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  chat
+                  </span>
+              <h3>Messages</h3>
+              <span class="message-count">5</span>
+          </a>
+          <a href="./addProduct.html" >
+              <span class="material-icons-sharp">
+                  add
+                  </span>
+              <h3>Add Product</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  logout
+                  </span>
+              <h3>Logout</h3>
+          </a>
+      </div>
+  </aside>
+  <div class="right">
+    <div class="top">
+      <button id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+      </button>
+      <div class="theme-toggler">
+          <div class="material-icons-sharp active" >light_mode</div>
+          <div class="material-icons-sharp">dark_mode</div>
+      </div>
+      <div class="profile">
+          <div class="info">
+              <p>Hey,<b>Daniel</b></p>
+              <small class="text-muted">Admin</small>
+          </div>
+          <div class="profile-photo">
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaj0ucKVpTNbey2YUj2f0V_MDQ1G6jBiwt2w&s" alt="profile">
+          </div>
+      </div>
+  </div>
+    <div id="todo-container">
+      <div id="header">
+        <h1>To Do List</h1>
+      </div>
+
+      <div id="todo-form">
+        <input
+          type="text"
+          class="input-item"
+          name="input_box"
+          id="input-box"
+          placeholder="Add Task"
+        />
+        <button id="input-button" onclick="addTask()">Add</button>
+      </div>
+      <div id="list-container"></div>
+      <hr />
+      <div class="counter-container">
+        <div id="task-counters">
+          Completed: <span id="completed-counter">0</span> | Uncompleted:
+          <span id="uncompleted-counter">0</span>
+        </div>
+      </div>
+    </div>
+      
+    <div id="stored-tasks">
+      <h2>Completed Tasks</h2>
+      <div id="completed-tasks"></div>
+      <h2>Uncompleted Tasks</h2>
+      <div id="uncompleted-tasks"></div>
+    </div>
+  </div>
+  </div>
+     <script src="./index.js"></script>
+    <script >
+       const inputBox = document.getElementById("input-box");
+const listContainer = document.getElementById("list-container");
+const completedCounter = document.getElementById("completed-counter");
+const uncompletedCounter = document.getElementById("uncompleted-counter");
+const completedTasksDiv = document.getElementById("completed-tasks");
+const uncompletedTasksDiv = document.getElementById("uncompleted-tasks");
+
+// Load tasks from localStorage
+window.onload = function() {
+  loadTasksFromStorage();
+};
+
+function addTask() {
+  const task = inputBox.value.trim();
+  if (!task) {
+    alert("Please write down a task");
+    return;
+  }
+
+  const taskData = {
+    task: task,
+    completed: false
+  };
+
+  // Add to local storage
+  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks.push(taskData);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  inputBox.value = '';
+  loadTasksFromStorage();  // Reload tasks to update UI
+}
+
+function loadTasksFromStorage() {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  listContainer.innerHTML = '';
+  completedTasksDiv.innerHTML = '';
+  uncompletedTasksDiv.innerHTML = '';
+
+  let completedCount = 0;
+  let uncompletedCount = 0;
+
+  tasks.forEach((taskData, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <label>
+        <input type="checkbox" ${taskData.completed ? 'checked' : ''}>
+        <span class="task">${taskData.task}</span>
+      </label>
+      <div>
+      <span class="edit-btn" onclick="editTask(${index})">Edit</span>
+      <span class="delete-btn" onclick="deleteTask(${index})">Delete</span></div>
+    `;
+
+    const checkbox = li.querySelector("input[type='checkbox']");
+    checkbox.addEventListener('click', () => toggleCompletion(index, checkbox.checked));
+
+    if (taskData.completed) {
+      completedTasksDiv.appendChild(li);
+      completedCount++;
+    } else {
+      uncompletedTasksDiv.appendChild(li);
+      uncompletedCount++;
+    }
+  });
+
+  // Update counters
+  completedCounter.textContent = completedCount;
+  uncompletedCounter.textContent = uncompletedCount;
+}
+
+function toggleCompletion(index, isChecked) {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks[index].completed = isChecked;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  loadTasksFromStorage();  // Reload tasks to update UI
+}
+
+function editTask(index) {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const newTask = prompt("Edit task:", tasks[index].task);
+  if (newTask !== null) {
+    tasks[index].task = newTask;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    loadTasksFromStorage();  // Reload tasks to update UI
+  }
+}
+
+function deleteTask(index) {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  if (confirm("Are you sure you want to delete this task?")) {
+    tasks.splice(index, 1);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    loadTasksFromStorage();  // Reload tasks to update UI
+  }
+}
+ 
+    </script>
+  </body>
+</html>

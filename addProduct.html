@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <style>
+      @import url(https://fonts.google.com/specimen/Outfit?selected=Material+Symbols+Sharp:add:FILL@0;wght@400;GRAD@0;opsz@24&icon.size=24&icon.color=%231f1f1f&icon.style=Sharp);
+
+      :root{
+    --color-primary:#54ccc4;
+    --color-logo2:#7b2229;
+    --color-success: #41f1b6;
+    --color-warning:#ffbb55;
+    --color-white:#fff;
+    --color-info-dark:#7d8da1;
+    --color-info-light:#dce1eb;
+    --color-dark:#363949;
+    --color-light:rgba(139, 235, 222, 0.18);
+    --color-primary-variant:#111e88;
+    --color-dark-variant:#677483;
+    --color-background: #f6f6f9;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+.dark-theme-variables{
+    --color-background: #181a1e;
+    --color-logo2:#dc5661;
+    --color-white: #252929;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light:rgba(70, 81, 81, 0.4);
+    --box-shadow:0 2rem 3rem #353737;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+}
+img{
+    display: block;
+    width: 100px;
+}
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.all{
+   width: 96%;
+   display: grid;
+   gap: 1.8rem;
+   margin: 0 auto;
+    grid-template-columns:14rem auto  ;
+}
+.container {
+  width: 70%;
+  margin: 50px auto;
+  text-align: center;
+  background-color: var(--color-white);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/*---------------*/
+aside{
+    height: 100vh;
+}
+aside .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+aside .logo{
+    display: flex;
+    gap: 0.8rem;
+}
+aside .logo img{  
+  margin-top: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+aside .close{
+    display: none;
+    color: var(--color-dark);
+}
+aside .sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 3rem;
+}
+aside h3{
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+aside .sidebar a{ 
+  text-decoration: none;
+    display: flex;
+    color: var(--color-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+}
+aside .sidebar a span{
+    font-size: 1.6rem;
+}
+aside .sidebar a:last-child{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+aside .sidebar a.active{
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    margin-left: 0;
+}
+aside .sidebar a.active:before{
+    content: "";
+    width: 6px;
+    height: 100%;
+    background-color: var(--color-primary);
+}
+aside .sidebar a.active span{
+    color: var(--color-primary);
+    margin-left: calc(1rem- 3px);
+}
+aside .sidebar a:hover{
+    color: var(--color-primary);
+}
+aside .sidebar a:hover span{
+    margin-left: 1rem;
+}
+aside .sidebar .message-count{
+    background: rgb(188, 30, 30);
+    color: white;
+    padding: 2px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+}
+@media screen and (max-width: 1200px){
+aside .logo h2{
+        display: none;
+    }
+    aside .sidebar h3{
+        display: none;
+    }
+    aside .sidebar a{
+        width: 5.6rem;
+    }
+    aside .sidebar a:last-child{
+        position: relative;
+        margin-top: 1.8rem;
+    }
+  }
+@media screen and (max-width:768px){
+  .all {
+   width: 100%;
+   grid-template-columns: 1fr;  
+  }
+  .container{
+    margin-top: 15vh;
+  }
+  aside{
+        position: fixed;
+        left: -250px;
+        background: var(--color-white);
+        width: 15rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light) ;
+        height: 100vh;
+        padding-right: 10px;
+        transition: 0.3s;
+    }
+    aside.open {
+        left: 0px;  
+    }
+    aside .logo{
+        margin-left: 1rem;
+    }
+    aside .logo h2{
+        display: inline;
+    }
+    aside .sidebar h3{
+        display: inline;
+    }
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
+    aside .sidebar a:last-child{
+        position: absolute;
+        bottom: 5rem;
+    }
+    aside .close{
+        display: inline-block;
+        cursor: pointer;
+    }
+.right {
+        width: 94%;
+        margin: 1rem auto 4rem; 
+      
+    }
+    .right .top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        padding: 0 0.8rem;
+        height: 4.6rem;
+        background: var(--color-white);
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+    }
+    .right .top .theme-toggler{
+        width: 4rem;
+        height: 2rem;
+        position: absolute;
+        left: 60%;
+    }
+    .right .profile .info{
+        display: none;
+    }
+    .profile-photo{
+        margin-right: 5vw;
+    }
+    .right .top button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+    .right .top button span{
+        font-size: 2rem;
+    }
+}
+.right .top{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.right .top button{
+    display: none;
+}
+.right .theme-toggler{
+    background: var(--color-light);
+    display: flex;
+    /* gap: 0.5rem; */
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    /* width: 4.8rem; */
+    cursor: pointer;
+    border-radius: 5px;
+}
+.right .theme-toggler {
+    font-size: 1.2rem;
+    width: 5%;
+    height: 100%;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    color: var(--color-dark);
+    justify-content: space-between;
+   
+}
+.right .theme-toggler .active{
+    background: var(--color-primary);
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+}
+.right .top .profile{
+    display: flex;
+    gap: 20px;
+}
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--color-dark);
+}
+h2{
+    font-size: 1.4rem;
+    color: var(--color-dark);
+}
+small{
+    font-size: 0.75rem;
+    color: var(--color-dark);
+}
+p{
+   color: var(--color-dark-variant); 
+}
+.logo2{
+    color: var(--color-logo2);
+}
+form {
+  margin-top: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input,
+textarea {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #54ccc4;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+label{
+    color: var(--color-dark);
+}
+button:hover {
+  background-color: #337e79;
+}
+
+#status-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: rgb(0, 128, 109);
+}
+
+.error {
+  color: red;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="all">
+    <aside>
+      <div class="top">
+          <div class="logo">
+              <img src="./images/codingAge.png" alt="">
+              <h2 >CODING <span class="logo2">AGE</span> </h2>
+          </div>
+          <div class="close" id="close-btn">
+              <span class="material-icons-sharp">
+                  close
+                  </span>
+          </div>
+      </div>
+      <div class="sidebar">
+          <a href="./index.html" >
+              <span class="material-icons-sharp" >
+                  grid_view
+                  </span>
+              <h3>Dashboard</h3>
+          </a>
+          <a href="./customers.html">
+              <span class="material-icons-sharp">
+                  person_outline
+                  </span>
+              <h3>Customers</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  receipt_long
+                  </span>
+              <h3>Orders</h3>
+          </a>
+          <a href="./task.html">
+              <span class="material-icons-sharp">
+                  task
+                  </span>
+              <h3>Tasks</h3>
+          </a>
+          <a href="./gallery.html">
+              <span class="material-icons-sharp">
+                  photo_library
+                  </span>
+              <h3>Gallery</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  chat
+                  </span>
+              <h3>Messages</h3>
+              <span class="message-count">5</span>
+          </a>
+          <a href="./addProduct.html" class="active">
+              <span class="material-icons-sharp">
+                  add
+                  </span>
+              <h3>Add Product</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  logout
+                  </span>
+              <h3>Logout</h3>
+          </a>
+      </div>
+  </aside>
+  <div class="right">
+  <div class="top">
+    <button id="menu-btn">
+        <span class="material-icons-sharp">menu</span>
+    </button>
+    <div class="theme-toggler">
+        <div class="material-icons-sharp active" >light_mode</div>
+        <div class="material-icons-sharp">dark_mode</div>
+    </div>
+    <div class="profile">
+        <div class="info">
+            <p>Hey,<b>Daniel</b></p>
+            <small class="text-muted">Admin</small>
+        </div>
+        <div class="profile-photo">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaj0ucKVpTNbey2YUj2f0V_MDQ1G6jBiwt2w&s" alt="profile">
+        </div>
+    </div>
+</div>
+    <div class="container">
+      <h1>Add a New Product</h1>
+
+      <form id="post-form">
+        <label for="title">Name:</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="body">Description:</label>
+        <textarea id="body" name="body" required></textarea>
+
+        <button type="submit">Submit </button>
+      </form>
+
+      <div id="status-message"></div>
+    </div>
+  </div>
+  </div>
+
+    <script >
+const form = document.getElementById('post-form');
+const statusMessage = document.getElementById('status-message');
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault(); 
+
+  const title = document.getElementById('title').value;
+  const body = document.getElementById('body').value;
+
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: title,
+      body: body,
+      userId: 1,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json); 
+      statusMessage.textContent = 'Product added successfully!';
+      statusMessage.classList.remove('error');
+      statusMessage.classList.add('success');
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      statusMessage.textContent = 'Failed to add product. Please try again.';
+      statusMessage.classList.add('error');
+    });
+
+  form.reset();
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggler = document.querySelector('.theme-toggler');
+    const lightModeIcon = themeToggler.querySelector('.material-icons-sharp:first-child');
+    const darkModeIcon = themeToggler.querySelector('.material-icons-sharp:last-child');
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme-variables');
+        darkModeIcon.classList.add('active');
+        lightModeIcon.classList.remove('active');
+    } else {
+        document.body.classList.remove('dark-theme-variables');
+        lightModeIcon.classList.add('active');
+        darkModeIcon.classList.remove('active');
+    }
+
+    themeToggler.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme-variables');
+        
+        lightModeIcon.classList.toggle('active');
+        darkModeIcon.classList.toggle('active');
+
+        if (document.body.classList.contains('dark-theme-variables')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidebar = document.querySelector('aside');
+    const sidebarLinks = document.querySelectorAll('.sidebar a');  
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+    });
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+    });
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            
+            link.classList.add('active');
+        });
+    });
+});
+    </script>
+  </body>
+</html>
