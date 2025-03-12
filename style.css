@@ -59,7 +59,7 @@ a{
 }
 img{
     display: block;
-    width: 100px;
+    width: 3vw;
 }
 h1{
     font-weight: 800;
@@ -84,8 +84,6 @@ small{
     color: var(--color-dark);
 }
 .profile-photo {
-    width: 2.8rem;
-    height: 2.8rem;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -153,7 +151,7 @@ aside .sidebar a{
     height: 3.7rem;
     transition: all 300ms ease;
 }
-aside .sidebar a span{
+aside .sidebar a i{
     font-size: 1.6rem;
 }
 aside .sidebar a:last-child{
@@ -172,14 +170,14 @@ aside .sidebar a.active:before{
     height: 100%;
     background-color: var(--color-primary);
 }
-aside .sidebar a.active span{
+aside .sidebar a.active i{
     color: var(--color-primary);
     margin-left: calc(1rem- 3px);
 }
 aside .sidebar a:hover{
     color: var(--color-primary);
 }
-aside .sidebar a:hover span{
+aside .sidebar a:hover i{
     margin-left: 1rem;
 }
 aside .sidebar .message-count{
@@ -224,17 +222,17 @@ main .insights > div{
 main .insights > div:hover{
     box-shadow: none;
 }
-main .insights > div span{
+main .insights > div i{
     background-color: rgb(229, 82, 74);
     padding: 0.5rem;
     border-radius: 50%;
     color: white;
     font-size: 2rem;
 }
-main .insights > div.expenses span{
+main .insights > div.expenses i{
     background-color: rgb(164, 147, 242);
 }
-main .insights > div.income span{
+main .insights > div.income i{
     background-color: rgb(242, 213, 147);
 }
 main .insights > div .middle{

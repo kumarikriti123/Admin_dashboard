@@ -1,9 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggler = document.querySelector('.theme-toggler');
-    const lightModeIcon = themeToggler.querySelector('.material-icons-sharp:first-child');
-    const darkModeIcon = themeToggler.querySelector('.material-icons-sharp:last-child');
+    const lightModeIcon = themeToggler.querySelector('.fa-sun');
+    const darkModeIcon = themeToggler.querySelector('.fa-moon');
 
+    // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme-variables');
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         darkModeIcon.classList.remove('active');
     }
 
+    // Toggle Theme
     themeToggler.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme-variables');
         
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');

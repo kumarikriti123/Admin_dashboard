@@ -3,7 +3,7 @@
   <head>
     <title>TO-DO List</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons+Sharp"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -130,6 +130,15 @@
       hr {
         border: 1px solid #ddd;
       }
+      @media screen  and (max-width:820px){
+    .all{
+        width: 100%;
+       display: block; 
+    }
+    #todo-container{
+      margin-top: 15vh;
+    }
+  }
     </style>
   </head>
   <body>
@@ -147,56 +156,41 @@
           </div>
       </div>
       <div class="sidebar">
-          <a href="./index.html" >
-              <span class="material-icons-sharp" >
-                  grid_view
-                  </span>
-              <h3>Dashboard</h3>
-          </a>
-          <a href="./customers.html">
-              <span class="material-icons-sharp" >
-                  person_outline
-                  </span>
-              <h3>Customers</h3>
-          </a>
-          <a href="#">
-              <span class="material-icons-sharp">
-                  receipt_long
-                  </span>
-              <h3>Orders</h3>
-          </a>
-          <a href="./task.html" class="active">
-              <span class="material-icons-sharp">
-                  task
-                  </span>
-              <h3>Tasks</h3>
-          </a>
-          <a href="./gallery.html"  >
-              <span class="material-icons-sharp">
-                  photo_library
-                  </span>
-              <h3>Gallery</h3>
-          </a>
-          <a href="#">
-              <span class="material-icons-sharp">
-                  chat
-                  </span>
-              <h3>Messages</h3>
-              <span class="message-count">5</span>
-          </a>
-          <a href="./addProduct.html" >
-              <span class="material-icons-sharp">
-                  add
-                  </span>
-              <h3>Add Product</h3>
-          </a>
-          <a href="#">
-              <span class="material-icons-sharp">
-                  logout
-                  </span>
-              <h3>Logout</h3>
-          </a>
-      </div>
+        <a href="./index.html" class="active">
+            <i class="fa-solid fa-boxes-stacked"></i> 
+            <h3>Dashboard</h3>
+        </a>
+        <a href="./customers.html">
+            <i class="fa-solid fa-users"></i> 
+            <h3>Customers</h3>
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-file"></i>
+            <h3>Orders</h3>
+        </a>
+        <a href="./task.html">
+            <i class="fa-solid fa-list-check"></i>
+            <h3>Tasks</h3>
+        </a>
+        <a href="./gallery.html">
+            <i class="fa-solid fa-images"></i>
+                
+            <h3>Gallery</h3>
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-comment"></i>
+            <h3>Messages</h3>
+            <span class="message-count">5</span>
+        </a>
+        <a href="./addProduct.html">
+            <i class="fa-solid fa-plus"></i>
+            <h3>Add Product</h3>
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <h3>Logout</h3>
+        </a>
+    </div>
   </aside>
   <div class="right">
     <div class="top">
@@ -204,9 +198,9 @@
           <span class="material-icons-sharp">menu</span>
       </button>
       <div class="theme-toggler">
-          <div class="material-icons-sharp active" >light_mode</div>
-          <div class="material-icons-sharp">dark_mode</div>
-      </div>
+        <i class="fa-solid fa-sun active"></i>
+        <i class="fa-solid fa-moon"></i>
+    </div>
       <div class="profile">
           <div class="info">
               <p>Hey,<b>Daniel</b></p>
