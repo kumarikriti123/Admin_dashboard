@@ -436,11 +436,14 @@ button:hover {
       <div id="status-message"></div>
     </div>
   </div>
+    
   </div>
  <script src="./index.js"></script>
     <script >
 const form = document.getElementById('post-form');
 const statusMessage = document.getElementById('status-message');
+
+let userIdCounter = 1; 
 
 form.addEventListener('submit', function (event) {
   event.preventDefault(); 
@@ -453,7 +456,7 @@ form.addEventListener('submit', function (event) {
     body: JSON.stringify({
       title: title,
       body: body,
-      userId: 1,
+      userId: userIdCounter, 
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -461,10 +464,11 @@ form.addEventListener('submit', function (event) {
   })
     .then((response) => response.json())
     .then((json) => {
-      console.log(json); 
-      statusMessage.textContent = 'Product added successfully!';
+      console.log(json);
+      statusMessage.textContent = `Product added successfully!`;
       statusMessage.classList.remove('error');
       statusMessage.classList.add('success');
+      userIdCounter++; 
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -474,6 +478,7 @@ form.addEventListener('submit', function (event) {
 
   form.reset();
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
