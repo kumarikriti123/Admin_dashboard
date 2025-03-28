@@ -36,15 +36,19 @@
 
 
 .project-card {
-    background: #fff;
+    background: var(--color-white);
     padding: 15px;
     border-radius: 10px;
     box-shadow: var(--box-shadow) ;
+    color: var(--color-dark);
 }
 
 .project-card h3 {
     font-size: 1.2rem;
     margin-bottom: 8px;
+}
+.right .theme-toggler {
+    width: 5%;
 }
 .all{
         width: 96%;
@@ -87,11 +91,7 @@
           </a>
           <a href="./customers.html">
               <i class="fa-solid fa-users"></i> 
-              <h3>Customers</h3>
-          </a>
-          <a href="#">
-              <i class="fa-solid fa-file"></i>
-              <h3>Orders</h3>
+              <h3>Students</h3>
           </a>
           <a href="./task.html " >
               <i class="fa-solid fa-list-check"></i>
@@ -103,15 +103,10 @@
               <h3>Gallery</h3>
           </a>
           <a href="./courses.html" class="active">
-            <i class="fa-solid fa-images"></i>
+            <i class="fa-solid fa-book"></i>
                 
             <h3>Courses</h3>
         </a>
-          <a href="#">
-              <i class="fa-solid fa-comment"></i>
-              <h3>Messages</h3>
-              <span class="message-count">5</span>
-          </a>
           <a href="./addProduct.html">
               <i class="fa-solid fa-plus"></i>
               <h3>Add Product</h3>
@@ -142,6 +137,7 @@
         </div>
     </div>
     <main class="container-div">
+        <h1>Courses</h1><br><br>
         <div class="projects-grid">
             <div class="project-card">
                 <h3>HTML</h3>
